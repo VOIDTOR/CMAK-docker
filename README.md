@@ -6,7 +6,7 @@
 ## Howto   
 ### Quick Start  
 ```  
-docker run -p 9998:9000 --network=YOURZKKAFKANETWORK -e ZK_HOSTS=zk1:2181,zk2:2181,zk3:2181 --name cmak voidtor/cmak  
+docker run -p 9998:9000 --network=YOURZKKAFKANETWORK \  -e ZK_HOSTS=zk1:2181,zk2:2181,zk3:2181 \  --name cmak voidtor/cmak  
 
 ```    
   
