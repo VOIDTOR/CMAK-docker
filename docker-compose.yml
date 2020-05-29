@@ -34,15 +34,6 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zk3:2888:3888;2181
     networks:
       - "code_default"
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '0.5'
-          memory: 200M
-
 
   zk3:
     image: zookeeper:3.5.7
@@ -59,14 +50,7 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
     networks:
       - "code_default"
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-        reservations:
-          cpus: '0.5'
-          memory: 200M
+
   kafka1:
     image: wurstmeister/kafka:2.12-2.5.0
     restart: always
@@ -138,6 +122,9 @@ services:
       - 9999:9000
     environment:
       ZK_HOSTS: zk1:2181,zk2:2181,zk3:2181
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: username
+      KAFKA_MANAGER_PASSWORD: password
     depends_on:
       - zk1
       - zk2
