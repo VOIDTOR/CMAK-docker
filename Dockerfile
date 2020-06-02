@@ -20,5 +20,5 @@ RUN apk add --no-cache bash \
 WORKDIR /cmak-${CMAK_VERSION}
 
 EXPOSE 9000
-
+CMD[ "if [ -f ./RUNNING_PID ];then rm -f ./RUNNING_PID" fi]
 CMD ["./bin/cmak","-Dconfig.file=conf/application.conf" ,"-Dhttp.port=9000"]
