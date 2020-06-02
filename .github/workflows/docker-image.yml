@@ -2,6 +2,8 @@ name: Docker Image CI
 
 on:
   push:
+    tags: 
+     - '*'  
     branches: [ master ]
   pull_request:
     branches: [ master ]
@@ -15,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag voidtor/cmak
+      run: docker build . --file Dockerfile --tag voidtor/cmak:latest
