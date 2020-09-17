@@ -3,7 +3,7 @@ FROM openjdk:14-jdk-alpine
 MAINTAINER VOIDTOR <caohaiwang@ergengtv.com>
 
 ENV ZK_HOSTS=localhost:2181 \
-    CMAK_VERSION=3.0.0.4 
+    CMAK_VERSION=3.0.0.5 
 
 RUN apk add --no-cache bash \
     bash-doc \
@@ -20,5 +20,5 @@ RUN apk add --no-cache bash \
 WORKDIR /cmak-${CMAK_VERSION}
 
 EXPOSE 9000
-CMD[ "if [ -f ./RUNNING_PID ];then rm -f ./RUNNING_PID" fi]
+CMD [ "if [ -f ./RUNNING_PID ];then rm -f ./RUNNING_PID fi" ]
 CMD ["./bin/cmak","-Dconfig.file=conf/application.conf" ,"-Dhttp.port=9000"]
